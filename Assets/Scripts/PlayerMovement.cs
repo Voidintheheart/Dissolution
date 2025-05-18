@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rbody;
 
+    [Header("Animation Settings")]
+    public Animator animator;
+    private bool facingRight = true;
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -28,5 +32,34 @@ public class PlayerMovement : MonoBehaviour
         rbody.MovePosition(newPos);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (facingRight) Flip();
+            animator.SetTrigger("MoveLeft");
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (!facingRight) Flip();
+            animator.SetTrigger("MoveRight");
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            animator.SetTrigger("MoveUp");
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            animator.SetTrigger("MoveDown");
+        }
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
 }
 
