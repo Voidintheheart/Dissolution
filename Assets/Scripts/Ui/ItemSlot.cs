@@ -12,6 +12,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public int quantity;
     public Sprite itemSprite;
     public bool isFull;
+    public Sprite emptySprite;
+
+    [SerializeField]
+    private int maxNumberOfItems;
 
 
 
@@ -39,29 +43,41 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    public void AddItem(string itemName, int quantity, Sprite itemSprite)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite)
     {
+        //Check if slot is full
+        if (isFull)
+            return quantity;
+
+        //Update Name
         this.itemName = itemName;
-        this.quantity = quantity;
-        this.itemSprite = itemSprite;
-        isFull = true;
 
-        quantityText.text = quantity.ToString();
-        quantityText.enabled = true;
+        //Update Image
+		this.itemSprite = itemSprite;
         itemImage.sprite = itemSprite;
-    }
 
-
-
-
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
+        //Update Quantity
+        this.quantity += quantity;
+        if(this.quantity >= maxNumberOfItems)
+        {
+            quantityText.text = quantity.ToString();
+            quantityText.enabled = true;
+            isFull = true;
         
+
+            //Return the LeftOvers
+            int extraItems = this.quantity - maxNumberOfItems;
+            this.quantity = maxNumberOfItems;
+            return extraItems;
+        }
+
+        //Update QUANTITY TEXT
+        quantityText.text = this.quantity.ToString();
+        quantityText.enabled = true;
+
+        return 0;
     }
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -77,13 +93,35 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
-        inventoryManager.DeselectAllSlots();
-        selectedShader.SetActive(true);
-        thisItemSelected = true; 
+        if (thisItemSelected)
+        {
+            bool usable = inventoryManager.UseItem(itemName);
+            this.quantity -= 1;
+            quantityText.text = this.quantity.ToString();
+            if (this.quantity <= 0)
+                EmptySlot();
+        }
+
+
+        else
+        {
+            inventoryManager.DeselectAllSlots();
+            selectedShader.SetActive(true);
+            thisItemSelected = true;
+        }
+        
+
+    }
+
+    private void EmptySlot()
+    {
+        quantityText.enabled = false;
+        itemImage.sprite = emptySprite;
     }
 
     public void OnRightClick()
     {
+        
 
     }
 

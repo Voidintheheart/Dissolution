@@ -6,57 +6,68 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject InventoryMenu;
     private bool menuActivated;
-    public ItemSlot[] itemSlot; 
 
+    public ItemSlot[] itemSlot;
+    public ItemSO[] itemSOs;
+    public Shooter shooter; 
 
-    // Start is called before the first frame update
     void Start()
     {
         menuActivated = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && menuActivated)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Time.timeScale = 1;
-            InventoryMenu.SetActive(false);
-            menuActivated = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && !menuActivated)
-        {
-            Time.timeScale = 0;
-            InventoryMenu.SetActive(true);
-            menuActivated = true;
+            menuActivated = !menuActivated;
+            InventoryMenu.SetActive(menuActivated);
+            Time.timeScale = menuActivated ? 0 : 1;
         }
     }
 
-    public void AddItem(string itemName, int quantity, Sprite itemSprite)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite)
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if(itemSlot[i].isFull == false)
+            if (!itemSlot[i].isFull && (itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0))
             {
-                itemSlot[i].AddItem(itemName, quantity, itemSprite);
-                return;
+                int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite);
+                if (leftOverItems > 0)
+                    return AddItem(itemName, leftOverItems, itemSprite);
+
+                return 0;
             }
         }
 
-
-        
-        Debug.Log("itemName= " + itemName + "quantity = " + quantity + "itemSprite = " + itemSprite);
+        return quantity; 
     }
-
-
 
     public void DeselectAllSlots()
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        foreach (var slot in itemSlot)
         {
-            itemSlot[i].selectedShader.SetActive(false);
-            itemSlot[i].thisItemSelected = false;
+            slot.selectedShader.SetActive(false);
+            slot.thisItemSelected = false;
         }
     }
-}
 
+    public bool UseItem(string itemName)
+    {
+        foreach (var item in itemSOs)
+        {
+            if (item.itemName == itemName)
+            {
+                if (item.projectilePrefab != null && shooter != null)
+                {
+                    shooter.SetProjectile(item.projectilePrefab, item.projectileSprite); // Cambia proyectil
+                }
+
+                return item.UseItem(); // Ejecuta lógica del item
+            }
+        }
+
+        return false; // Si no se encontró ningún item
+    }
+
+}
