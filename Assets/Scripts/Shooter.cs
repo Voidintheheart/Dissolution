@@ -11,6 +11,8 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float trajectoryMaxHeight = 1f;
     [SerializeField] private AnimationCurve trajectoryAnimationCurve;
 
+    public AudioSource launchAudioSource;
+
     private float shootTimer;
 
     void Update()
@@ -28,6 +30,11 @@ public class Shooter : MonoBehaviour
             Projectile projectile = projObj.GetComponent<Projectile>();
             projectile.InitializeProjectile(mouseWorldPos, projectileMoveSpeed, trajectoryMaxHeight);
             projectile.InitializeAnimationCurves(trajectoryAnimationCurve);
+
+            if (launchAudioSource != null) // <-- Y aquí
+            {
+                launchAudioSource.Play();
+            }
         }
     }
 }
