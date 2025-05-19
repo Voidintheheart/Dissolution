@@ -7,16 +7,26 @@ public class PlayerMovement : MonoBehaviour
 
     public float movementSpeed = 1f;
 
+
+
+
+
     Rigidbody2D rbody;
 
     [Header("Animation Settings")]
     public Animator animator;
     private bool facingRight = true;
 
+
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
+
     }
+
+
+
 
 
     // Update is called once per frame
