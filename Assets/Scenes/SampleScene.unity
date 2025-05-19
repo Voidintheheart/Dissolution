@@ -3060,7 +3060,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48df33a2aa1af410a8799850db380d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 852081861750307552, guid: 7a2cfdc45edff4b6995ca3ec5b584640, type: 3}
+  projectilePrefabs:
+  - {fileID: 1939656264882011628, guid: 809d41ce0fd0640448e4879eb3a3f071, type: 3}
+  - {fileID: 6480497501954112549, guid: 56f10f882df0344b8bf09cfa6e2b15e6, type: 3}
+  - {fileID: 4232064019382975740, guid: 91324895896814e24aa443f65681e16d, type: 3}
   shootRate: 1
   projectileMoveSpeed: 5
   trajectoryMaxHeight: 0.3
