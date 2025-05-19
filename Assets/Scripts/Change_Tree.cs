@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Change_Tree : MonoBehaviour
@@ -16,7 +18,9 @@ public class Change_Tree : MonoBehaviour
     public bool computerbase_effect = false;
     public bool computerfire_effect = false;
     public bool computerice_effect = false;
-
+    public ParticleSystem particulasfuego;
+    public ParticleSystem particulasice;
+    public ParticleSystem particulasreparar;
     void Update()
     { 
     }
@@ -34,7 +38,10 @@ public class Change_Tree : MonoBehaviour
             case "ice":
                 ice();
                 break;
-              
+            default:
+                nature();
+                break;    
+                
         }
     }
     private void nature()
@@ -42,23 +49,29 @@ public class Change_Tree : MonoBehaviour
         computerbase = true;
         computerfire = false;
         computerice = false;
-        computerbase_effect = true;
+        computerbase_effect= true;
         nature_effect.gameObject.SetActive(computerbase_effect);
         Base.gameObject.SetActive(computerbase);
         Fire.gameObject.SetActive(computerfire);
         Ice.gameObject.SetActive(computerice);
-
-        
+        particulasreparar.Play();  
+        particulasfuego.Stop();
+        particulasice.Stop();
+       
     }
     private void fire()
     {
         computerbase = false;
         computerfire = true;
         computerice = false;
+        computerfire_effect = true;
         Base.gameObject.SetActive(computerbase);
         Fire.gameObject.SetActive(computerfire);
         Ice.gameObject.SetActive(computerice);
-
+       particulasreparar.Stop();
+        particulasice.Stop();
+        particulasfuego.Play();
+        
 
     }
     private void ice()
@@ -69,8 +82,10 @@ public class Change_Tree : MonoBehaviour
         Base.gameObject.SetActive(computerbase);
         Fire.gameObject.SetActive(computerfire);
         Ice.gameObject.SetActive(computerice);
-
-
+        particulasreparar.Stop();
+        particulasfuego.Stop();
+        particulasice.Play();
+       
     }
     IEnumerator wait()
     {

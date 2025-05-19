@@ -56,12 +56,15 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log("Impacto con: " + other.name);
 
+
         if (other.gameObject.name == "Tree")
         {
             Items thisItem = GetComponent<Items>();
             if (thisItem != null)
+
             {
                 Change_Tree treeScript = other.GetComponent<Change_Tree>();
+                treeScript.change_tree(thisItem.itemName);
                 if (treeScript != null)
                 {
                     treeScript.change_tree(thisItem.itemName);
