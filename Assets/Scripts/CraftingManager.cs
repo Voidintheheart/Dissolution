@@ -41,7 +41,30 @@ public class CraftingManager : MonoBehaviour
                 itemList[nearestSlot.index] = currentItem; 
                 currentItem = null;
             }
+            if(currentItem != null)
+            {
+                customCursor.gameObject.SetActive(false);
+                Slots nearestSlot= null;
+                float shortestDistance = float.MaxValue;
+
+                foreach (Slots slot in craftingSlots) {
+                    float dist = Vector2.Distance (Input.mousePosition, slot.transform.position);
+                    if (dist < shortestDistance)
+                    {
+                        shortestDistance = dist;
+                        nearestSlot = slot;
+
+                    }
+                }
+
+                nearestSlot.gameObject.SetActive(true);
+                nearestSlot.GetComponent<Image>().sprite = currentItem.GetComponent<Image>().sprite;
+                nearestSlot.item = currentItem;
+                itemList[nearestSlot.index] = currentItem; 
+                currentItem = null;
+            }
         }
+
         CheckForCreatedRecipe();
     }
     void CheckForCreatedRecipe()
