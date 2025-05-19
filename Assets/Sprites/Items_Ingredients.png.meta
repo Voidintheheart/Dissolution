@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa7f0e88d97c44c488053bdcfd8779cd
+guid: b60c339691ea54040b2ed6d3edc57b6a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huds_caldero_0
+      name: Items_Ingredients_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 171
-        width: 74
-        height: 74
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce7a0d4c499312b44bf16298e6c09a75
-      internalID: 1568718754
+      spriteID: 7ddb3088276e48d4ba2b510bb3289939
+      internalID: 229387437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huds_caldero_1
+      name: Items_Ingredients_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 132
-        width: 160
-        height: 32
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36470bf8b8bedfc42ab532b51487cc2a
-      internalID: -1490110617
+      spriteID: ff286d45be8e25b489351745f2382f83
+      internalID: 1755254671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huds_caldero_2
+      name: Items_Ingredients_2
       rect:
         serializedVersion: 2
-        x: 126
-        y: 85
-        width: 35
-        height: 41
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aad5eeb2c10b544490693e9cc776585
-      internalID: -1553325377
+      spriteID: e36f97b6c022c174d8c0ecb29a981b16
+      internalID: -1187506742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huds_caldero_3
+      name: Items_Ingredients_3
       rect:
         serializedVersion: 2
-        x: 73
-        y: 7
-        width: 136
-        height: 72
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,8 +174,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d4fdbb4cd24b2347aba7090ee7d6223
-      internalID: -884789423
+      spriteID: fa3014a3bb8df264da95d58ff21f958a
+      internalID: -1871483394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Items_Ingredients_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc047eca155172943a17a052957cacb5
+      internalID: 1372997979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Items_Ingredients_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca1f1dcf06b9394682914bd5b5b8760
+      internalID: -196724664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Items_Ingredients_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a283e661b39ba49a3144cf32413d58
+      internalID: 1501437890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Items_Ingredients_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcdfcbf4f7ce91342aa01b317e6ff709
+      internalID: -638067733
       vertices: []
       indices: 
       edges: []
@@ -191,10 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Huds_caldero_0: 1568718754
-      Huds_caldero_1: -1490110617
-      Huds_caldero_2: -1553325377
-      Huds_caldero_3: -884789423
+      Items_Ingredients_0: 229387437
+      Items_Ingredients_1: 1755254671
+      Items_Ingredients_2: -1187506742
+      Items_Ingredients_3: -1871483394
+      Items_Ingredients_4: 1372997979
+      Items_Ingredients_5: -196724664
+      Items_Ingredients_6: 1501437890
+      Items_Ingredients_7: -638067733
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
