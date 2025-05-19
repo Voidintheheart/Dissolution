@@ -51,4 +51,30 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Impacto con: " + other.name);
+
+        if (other.gameObject.name == "Tree")
+        {
+            Items thisItem = GetComponent<Items>();
+            if (thisItem != null)
+            {
+                Change_Tree treeScript = other.GetComponent<Change_Tree>();
+                if (treeScript != null)
+                {
+                    treeScript.change_tree(thisItem.itemName);
+                }
+                else
+                {
+                    Debug.LogWarning("No se encontró TreeController en el objeto impactado.");
+                }
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+
 }

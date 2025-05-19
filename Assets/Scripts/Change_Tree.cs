@@ -7,22 +7,34 @@ public class Change_Tree : MonoBehaviour
     public GameObject Base;
     public GameObject Fire;
     public GameObject Ice;
+    public GameObject nature_effect;
+    public GameObject fire_effect;
+    public GameObject ice_effect;
     public bool computerbase = true;
     public bool computerfire = false;
     public bool computerice = false;
+    public bool computerbase_effect = false;
+    public bool computerfire_effect = false;
+    public bool computerice_effect = false;
 
     void Update()
-    { if (computerbase == true)
+    { 
+    }
+
+    public void change_tree(string ItemName)
+    {
+        switch (ItemName)
         {
-            Invoke("fire", 2f);
-        }
-    else if (computerfire == true)
-        {
-            Invoke("ice", 2f);
-        }
-    else if (computerice == true)
-        {
-            Invoke("nature", 2f);
+            case "nature":
+                nature();
+                break;
+            case "fire":
+                fire();
+                break;
+            case "ice":
+                ice();
+                break;
+              
         }
     }
     private void nature()
@@ -30,6 +42,8 @@ public class Change_Tree : MonoBehaviour
         computerbase = true;
         computerfire = false;
         computerice = false;
+        computerbase_effect = true;
+        nature_effect.gameObject.SetActive(computerbase_effect);
         Base.gameObject.SetActive(computerbase);
         Fire.gameObject.SetActive(computerfire);
         Ice.gameObject.SetActive(computerice);
