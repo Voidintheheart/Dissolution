@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
 
     private float travelProgress = 0f;
 
-    public AudioSource destroyAudioSource; // AudioSource para sonido destrucción
+    public AudioSource destroyAudioSource; // AudioSource para sonido destrucciÃ³n
     private bool isDestroying = false;     // Para evitar reproducir varias veces
 
     public void InitializeProjectile(Vector3 targetPos, float moveSpeed, float trajectoryMaxHeight)
@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         if (isDestroying)
-            return; // No hacer nada mientras suena el audio de destrucción
+            return; // No hacer nada mientras suena el audio de destrucciÃ³n
 
         // Update progress over time
         float distance = Vector3.Distance(startPoint, endPoint);
@@ -58,16 +58,5 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private IEnumerator DestroyWithSound()
-    {
-        isDestroying = true;
 
-        if (destroyAudioSource != null)
-        {
-            destroyAudioSource.Play();
-            yield return new WaitForSeconds(destroyAudioSource.clip.length);
-        }
-
-        Destroy(gameObject);
-    }
 }
